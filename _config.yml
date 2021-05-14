@@ -1,3 +1,4 @@
 theme: jekyll-theme-slate
 title: Welcome to DPDK training
 description: This will help you to learn DPDK with examples.
+source: docs
