@@ -1,11 +1,11 @@
 # DPDK Training
 
-In this we will cover DPDK basic with example code and try to understand how it
-work. Also will try to cover detail about DPDK internal.
+I will try to cover DPDK from basic to advance with example code.
+And also explain about DPDK internal to understand it in detail.
 
-To gain, you must practice example by running them.
+To gain more, you must practice example by running them.
 
-In this, we will use ubuntu 20.04 OS and current DPDK release version.
+I am using ubuntu 20.04 OS and current DPDK stable release version v20.11.
 
 ## Installation
 
@@ -20,7 +20,7 @@ apt install wget git vim
 ```
 
 Please refer to [DPDK document](https://doc.dpdk.org/guides/linux_gsg/sys_reqs.html#compilation-of-the-dpdk)
-to install packages as per your selected linux version.
+to install packages as per your selected linux version / other OS.
 
 * Checkout DPDK source code.
 ```
