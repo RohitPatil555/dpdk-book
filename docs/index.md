@@ -17,6 +17,7 @@ pip3 install meson ninja
 apt install python3-pyelftools
 apt install libnuma-dev
 apt install wget git vim
+apt install -y pkg-config
 ```
 
 Please refer to [DPDK document](https://doc.dpdk.org/guides/linux_gsg/sys_reqs.html#compilation-of-the-dpdk)
@@ -30,13 +31,16 @@ git clone --branch v20.11 https://github.com/DPDK/dpdk.git dpdk_v20
 * Compile code using below command
 ```
 meson build
+cd build
 ninja
 ninja install
+pkg-config --cflags libdpdk
+pkg-config --libs libdpdk
 ```
 
-## Example
+## DPDK
 
-Each example in section will explain about DPDK module/library in detail.
+Each tab explain about perticular module/library within DPDK along with example.
 
-* [Argument Parsing](modules/args.md)
+* [EAL](modules/eal.md)
 * [Threading Module](modules/threading.md)
