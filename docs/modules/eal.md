@@ -21,6 +21,7 @@ lcore will be cover in thread model section. As intro, please consider lcore as 
 And also send --no-huge to disable huge pages for now, It will be cover in "hugepage" section.
 
 * Code.
+
 ```
 #include <stdio.h>
 #include <rte_eal.h>
@@ -41,11 +42,13 @@ int main(int argc, char **argv) {
 ```
 
 * Compile command.
+
 ```
 gcc -o test test.c -lrte_eal
 ```
 
 * Configure EAL
+
 ```
 ./build/test -l 0-1 --no-huge
 ```
