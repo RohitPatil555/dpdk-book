@@ -2,13 +2,18 @@
 # Threading Model
 
 In DPDK, processing/worker thread call lcore and those are created equal to number of CPU.
-There is a max limit for lcore that is configure during compilation time.
+And this thread are basically use to process data plane processing.
+
+There is a max limit for lcore that is configure during compilation time as shwon below.
 ```
 meson configure -Dmax_lcores=<number of core>
 ```
-let say, system have 32 core and max is set to 16. Then DPDK create only 16 lcore thread.
+let see, how this work ? Consider you have system with 32 core and max is set to 16.
+Then DPDK create only 16 lcore thread. And if system have 8 core and max limit set to 16.
+Then DPDK create only 8 lcore thread.
 
-Now, lets look at lcore threading behaviour with configuration.
+Now, lets look at lcore threading behaviour with configuration. Please foloow below steps
+to understand more about lcore.
 
 #### Code
 
@@ -43,7 +48,7 @@ gcc -o test test.c -lrte_eal
 
 #### Try Out
 
-Let try multiple option and see its effect.
+Let try multiple config option and see its effect on DPDK threading model.
 
 ##### Command
 
@@ -71,7 +76,8 @@ And Core 1,2, and 3 is use for packet processin (lcore threads) lcore-worker-1, 
 
 ##### Command
 
-Put limit on lcore, let use core 1 and 2 for lcore.
+Put limit on lcore, let ask DPDK to use core 1 and 2 for lcore.
+
 Please execute "killall test" before running below command.
 
 ```
@@ -89,13 +95,13 @@ test(5457)-+-{eal-intr-thread}(5458)
 ```
 
 If we look at output we can see only one lcore-worker-2 is running. But we provided two core "-l 1-2".
-Why this is happening ? It is very easy, in DPDK main thread also act as lcore. And its name kept same as process name.
+Why this is happening ?
+In DPDK main thread also act as lcore and hence we not see 2 thread with name as "lcore".
 
-If we do taskset command exercise, it show us main and lcore-worker-2 thread are using core 1 and 2.
+If we execute taskset command, it show us main and lcore-worker-2 thread are using core 1 and 2.
 And other utilities eal-intr-thread, rte_mp_handle, and 5461-test running on non-lcore CPU (core-0 and 3).
 
 #### Conclusion
 
 If we use lcore option then DPDK try to use other core to run utitlity task.
-
-In this way, DPDK make sure to run single processing thread on one dedicated core/cpu to get full computation power.
+In this way, we can make sure DPDK use 100% cpu power for packet processing.

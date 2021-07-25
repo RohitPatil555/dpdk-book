@@ -44,3 +44,5 @@ Each tab explain about perticular module/library within DPDK along with example.
 
 * [EAL](modules/eal.md)
 * [Threading Module](modules/threading.md)
+* [Memory Pool](modules/mempool.md)
+* [Packet Pool](modules/packet_buffer.md)

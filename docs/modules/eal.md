@@ -16,8 +16,7 @@ rte_eal_init(argc, argv)
 
 ## Example
 
-Let take example to configure lcore in DPDK.
-lcore will be cover in thread model section. As intro, please consider lcore as a thread that pin to a perticular CPU.
+Let take example to configure lcore in DPDK. We will see more about lcore in "thread model" section.
 And also send --no-huge to disable huge pages for now, It will be cover in "hugepage" section.
 
 #### Code
